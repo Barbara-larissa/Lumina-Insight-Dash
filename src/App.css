@@ -1,0 +1,134 @@
+/* ============================================================
+   CONFIGURAÇÕES GERAIS E VARIÁVEIS (LARI-DEV PREMIUM)
+   ============================================================ */
+:root {
+  /* Cores extraídas da referência */
+  --bg-deep: #05010d;         /* Fundo total */
+  --bg-sidebar: #130721;      /* Fundo da lateral */
+  --card-dark: #0b0118;       /* Fundo dos módulos */
+  --neon-cyan: #00f2ff;       /* Azul Neon */
+  --neon-purple: #9d00ff;     /* Roxo Neon */
+  --neon-pink: #ff00e5;       /* Rosa Neon (Gráficos) */
+  --text-main: #ffffff;       /* Texto branco */
+  --text-dim: #64748b;        /* Texto cinza azulado (Labels) */
+}
+
+/* Reset básico para garantir que o dashboard ocupe a tela toda */
+body {
+  background-color: var(--bg-deep) !important;
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   1. CARDS E CONTAINERS (ESTILO PREMIUM DARK)
+   ============================================================ */
+.bg-\[\#0B0118\] {
+  background: linear-gradient(145deg, #13072b, #0b0118) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 2.5rem !important;
+  box-shadow: 
+    inset 0 0 20px rgba(157, 0, 255, 0.03), 
+    0 15px 35px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.bg-\[\#0B0118\]:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 242, 255, 0.2) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ============================================================
+   2. TIPOGRAFIA (ESTILO DATA TEXT / LABELS)
+   ============================================================ */
+/* Títulos pequenos e espaçados como na foto */
+h4, .text-\[\#FF00E5\], .text-\[\#00F2FF\] {
+  text-transform: uppercase !important;
+  letter-spacing: 0.3em !important;
+  font-weight: 900 !important;
+  font-size: 10px !important;
+}
+
+/* Parágrafos de apoio */
+p {
+  color: var(--text-dim) !important;
+  font-size: 11px !important;
+  line-height: 1.6 !important;
+}
+
+/* ============================================================
+   3. GRÁFICOS (RECHARTS CUSTOMIZAÇÃO)
+   ============================================================ */
+
+/* Linhas de fundo horizontais (Discretas) */
+.recharts-cartesian-grid-horizontal line {
+  stroke: rgba(255, 255, 255, 0.05) !important;
+  stroke-width: 1;
+}
+
+/* Remove linhas verticais para limpar o gráfico */
+.recharts-cartesian-grid-vertical line {
+  display: none !important;
+}
+
+/* Texto dos eixos (Números laterais) */
+.recharts-cartesian-axis-tick-value {
+  fill: var(--text-dim) !important;
+  font-size: 10px !important;
+  font-weight: 500;
+}
+
+/* A curva rosa do gráfico principal */
+.recharts-line-curve {
+  stroke: var(--neon-pink) !important;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 5px rgba(255, 0, 229, 0.4));
+}
+
+/* Pontos de dados (Data 01, 02...) */
+.recharts-line-dot circle {
+  fill: #ffffff !important;
+  stroke: var(--neon-pink) !important;
+  stroke-width: 2;
+  r: 4;
+}
+
+/* Linhas brancas verticais de referência */
+.recharts-reference-line-line {
+  stroke: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ============================================================
+   4. COMPONENTES DE INTERAÇÃO (SIDEBAR / INPUTS)
+   ============================================================ */
+/* Scrollbar fina para não poluir o visual */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e0b36;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
+}
+
+/* Campo de busca (Header) */
+input {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+  color: white !important;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: var(--neon-cyan) !important;
+  outline: none;
+}
