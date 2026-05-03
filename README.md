@@ -1,16 +1,42 @@
-# React + Vite
+# 🌟 Lumina Insight Dash
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um dashboard de monitoramento de alta performance com estética **Neon Glassmorphism**, desenvolvido para oferecer uma experiência de usuário (UX) moderna e intuitiva.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📸 Visual do Projeto
 
-## React Compiler
+Aqui estão as capturas de tela do sistema em funcionamento:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Painel Principal (Visão Geral)
+![Dashboard Principal](./painel1.png)
 
-## Expanding the ESLint configuration
+### Monitoramento e Métricas
+![Métricas e Performance](./painel2.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Tecnologias Utilizadas
+
+Este projeto foi construído com o que há de mais moderno no ecossistema Front-End:
+
+*   **React + Vite**: Para um desenvolvimento veloz e performance otimizada.
+*   **Tailwind CSS**: Estilização baseada em utilitários para layouts responsivos.
+*   **JavaScript (ES6+)**: Lógica robusta e moderna.
+*   **Firebase**: Integração de banco de dados e autenticação.
+
+---
+
+## ✨ Diferenciais de UI/UX
+
+*   **Tema Neon Customizado**: Interface desenvolvida com foco em brilhos e contrastes de alta qualidade.
+*   **Design Responsivo**: Adaptável para qualquer tamanho de tela, do mobile ao desktop.
+*   **Glassmorphism**: Efeitos de transparência e desfoque para um visual "Premium".
+
+---
+
+## 🛠️ Como rodar o projeto localmente
+
+1. Clone o repositório:
+   ```bash
+   git clone [https://github.com/Barbara-larissa/Lumina-Insight-Dash.git](https://github.com/Barbara-larissa/Lumina-Insight-Dash.git)
