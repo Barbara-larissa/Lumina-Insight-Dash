@@ -1,5 +1,6 @@
 import React from "react";
 import { ThumbsUp, MessageCircle } from "lucide-react";
+import styles from "../styles/modules/forum.module.css";
 
 export default function Forum() {
   const topicos = [
@@ -9,46 +10,36 @@ export default function Forum() {
   ];
 
   return (
-    /* CONTAINER PRINCIPAL DO FÓRUM */
-    <section className="animate-in fade-in slide-in-from-top-4 duration-500 space-y-8">
+    <section className={styles.section}>
       
-      {/* CABEÇALHO DA PÁGINA */}
       <header>
-        <h2 className="text-2xl font-black text-[#9D00FF] uppercase tracking-[0.4em] drop-shadow-[0_0_8px_#9D00FF]">
-          Fórum da <span className="text-white">Comunidade</span>
+        <h2 className={styles.title}>
+          Fórum da <span className={styles.titleWhite}>Comunidade</span>
         </h2>
       </header>
 
-      {/* LISTAGEM DE TÓPICOS */}
-      <main className="space-y-4">
+      <main className={styles.mainList}>
         {topicos.map((topico) => (
-          
-          /* CARD DE TÓPICO INDIVIDUAL */
-          <article 
-            key={topico.id} 
-            className="bg-[#0B0118] p-6 rounded-[2rem] border border-white/5 hover:border-[#9D00FF]/30 transition-all group shadow-xl"
-          >
-            <div className="flex justify-between items-start">
+          <article key={topico.id} className={styles.topicCard}>
+            <div className={styles.topicHeader}>
               
-              {/* CONTEÚDO DO TÓPICO */}
               <div className="flex flex-col">
-                <h4 className="text-white font-bold text-lg mb-2 group-hover:text-[#00F2FF] transition-colors">
+                <h4 className={styles.topicTitle}>
                   {topico.titulo}
                 </h4>
-                <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest">
-                  Postado por: <span className="text-slate-300">{topico.autor}</span>
+                <p className={styles.authorLabel}>
+                  Postado por: <span className={styles.authorName}>{topico.autor}</span>
                 </p>
               </div>
 
-              {/* MÉTRICAS E ENGAJAMENTO */}
-              <aside className="flex gap-4 text-slate-500">
-                <div className="flex items-center gap-1.5">
+              <aside className={styles.metrics}>
+                <div className={styles.metricItem}>
                   <ThumbsUp size={14} />
-                  <span className="text-xs font-bold">{topico.likes}</span>
+                  <span className={styles.metricValue}>{topico.likes}</span>
                 </div>
-                <div className="flex items-center gap-1.5">
+                <div className={styles.metricItem}>
                   <MessageCircle size={14} />
-                  <span className="text-xs font-bold">{topico.respostas}</span>
+                  <span className={styles.metricValue}>{topico.respostas}</span>
                 </div>
               </aside>
 
@@ -57,9 +48,8 @@ export default function Forum() {
         ))}
       </main>
       
-      {/* AÇÕES DO FÓRUM */}
       <footer>
-        <button className="mt-4 px-8 py-3 bg-[#9D00FF]/20 text-[#9D00FF] border border-[#9D00FF]/40 rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-[#9D00FF] hover:text-white transition-all shadow-lg">
+        <button className={styles.createButton}>
           Criar Novo Tópico
         </button>
       </footer>

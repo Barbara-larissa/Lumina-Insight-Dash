@@ -1,13 +1,3 @@
-# 🌟 Lumina Insight Dash
-
-Um dashboard de monitoramento de alta performance com estética **Neon Glassmorphism**, desenvolvido para oferecer uma experiência de usuário (UX) moderna e intuitiva.
-
----
-
-## 📸 Visual do Projeto
-
-Aqui estão as capturas de tela do sistema em funcionamento:
-
 ### Painel Principal (Visão Geral)
 ![Dashboard Principal](./img/painel1.png)
 
@@ -16,27 +6,32 @@ Aqui estão as capturas de tela do sistema em funcionamento:
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Tecnologias e Arquitetura
 
-Este projeto foi construído com o que há de mais moderno no ecossistema Front-End:
+Este projeto utiliza uma stack híbrida para garantir performance e atualização constante dos dados:
 
-*   **React + Vite**: Para um desenvolvimento veloz e performance otimizada.
-*   **Tailwind CSS**: Estilização baseada em utilitários para layouts responsivos.
-*   **JavaScript (ES6+)**: Lógica robusta e moderna.
-*   **Firebase**: Integração de banco de dados e autenticação.
+*   **Front-End**: 
+    *   **React + Vite**: Interface ultraveloz e otimizada.
+    *   **Tailwind CSS (v4)**: Estilização moderna baseada em utilitários.
+    *   **CSS Modules**: Modularização para garantir isolamento de estilos e manutenibilidade.
+*   **Back-End (Real-Time)**:
+    *   **PHP (v8+)**: Processamento de lógica de servidor e gerenciamento de APIs.
+    *   **MySQL**: Banco de dados relacional para armazenamento seguro de métricas financeiras.
+    *   **Real-time Connection**: O sistema realiza consultas automáticas ao banco de dados para refletir mudanças instantâneas no dashboard sem necessidade de recarregar a página.
 
 ---
 
-## ✨ Diferenciais de UI/UX
+## ✨ Diferenciais Técnicos (UI/UX)
 
-*   **Tema Neon Customizado**: Interface desenvolvida com foco em brilhos e contrastes de alta qualidade.
-*   **Design Responsivo**: Adaptável para qualquer tamanho de tela, do mobile ao desktop.
-*   **Glassmorphism**: Efeitos de transparência e desfoque para um visual "Premium".
+*   **Glassmorphism Premium**: Efeitos de transparência e desfoque aplicados em camadas para profundidade visual.
+*   **Métricas Dinâmicas**: Gráficos circulares que interpretam dados diretamente do banco de dados `deshboard`.
+*   **Design Responsivo**: Totalmente adaptável, do desktop aos dispositivos mobile.
+*   **Feedback de Conexão**: Indicadores visuais de status da base de dados e fluxo de sincronização.
 
 ---
 
 ## 🛠️ Como rodar o projeto localmente
 
-1. Clone o repositório:
+1. **Clone o repositório**:
    ```bash
    git clone [https://github.com/Barbara-larissa/Lumina-Insight-Dash.git](https://github.com/Barbara-larissa/Lumina-Insight-Dash.git)

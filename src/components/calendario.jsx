@@ -1,57 +1,58 @@
 import React from 'react';
+import styles from "../styles/modules/calendario.module.css";
 
 const Calendario = () => {
+  const dataAtual = new Date();
+  const hoje = dataAtual.getDate();
+  const mesAtual = dataAtual.toLocaleString('pt-BR', { month: 'long' });
+  const anoAtual = dataAtual.getFullYear();
+
+  // Lógica para descobrir quantos dias tem o mês e em qual dia da semana começa
+  const primeiroDiaDoMes = new Date(anoAtual, dataAtual.getMonth(), 1).getDay();
+  const ultimoDiaDoMes = new Date(anoAtual, dataAtual.getMonth() + 1, 0).getDate();
+
   const diasSemana = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
-  const diasMes = Array.from({ length: 30 }, (_, i) => i + 1);
+  
+  // Criamos as células vazias para alinhar o primeiro dia do mês corretamente
+  const emptyCells = Array.from({ length: primeiroDiaDoMes });
+  const diasMes = Array.from({ length: ultimoDiaDoMes }, (_, i) => i + 1);
 
   return (
-    /* CONTAINER PRINCIPAL DO CALENDÁRIO */
-    <article className="bg-[#0B0118] p-8 rounded-[2.5rem] h-[350px] border border-white/5 flex flex-col w-full shadow-2xl overflow-hidden relative">
+    <article className={styles.container}>
       
-      {/* CABEÇALHO E NAVEGAÇÃO */}
-      <header className="flex justify-between items-center mb-5 relative z-10">
-        <h4 className="text-2xl font-black uppercase tracking-[0.25em] text-white">
-          Abril <span className="text-[#9D00FF]">2026</span>
+      <header className={styles.header}>
+        <h4 className={styles.title}>
+          {mesAtual} <span className={styles.yearHighlight}>{anoAtual}</span>
         </h4>
 
-        <nav className="flex gap-2">
-          <button className="w-8 h-8 rounded-full border border-white/5 flex items-center justify-center text-white/30 hover:bg-white/5 transition-all text-sm">
-            &lt;
-          </button>
-          <button className="w-8 h-8 rounded-full border border-white/5 flex items-center justify-center text-white/30 hover:bg-white/5 transition-all text-sm">
-            &gt;
-          </button>
+        <nav className={styles.nav}>
+          <button className={styles.navButton}> &lt; </button>
+          <button className={styles.navButton}> &gt; </button>
         </nav>
       </header>
 
-      {/* DIAS DA SEMANA (LABEL) */}
-      <section className="grid grid-cols-7 gap-2 mb-3 relative z-10">
+      <section className={styles.weekGrid}>
         {diasSemana.map((dia, index) => (
-          <span
-            key={index}
-            className="text-[11px] text-white/20 font-black text-center uppercase tracking-widest"
-          >
+          <span key={index} className={styles.weekDayLabel}>
             {dia}
           </span>
         ))}
       </section>
 
-      {/* GRADE DE DIAS (CALENDAR GRID) */}
-      <main className="grid grid-cols-7 gap-2 flex-1 relative z-10">
+      <main className={styles.daysGrid}>
+        {/* Espaços vazios do início do mês */}
+        {emptyCells.map((_, i) => (
+          <div key={`empty-${i}`} className={styles.emptyCell} />
+        ))}
+
+        {/* Dias reais */}
         {diasMes.map((dia) => {
-          const isToday = dia === 30; // Ajustado para o dia atual
+          const isToday = dia === hoje;
 
           return (
             <div
               key={dia}
-              className={`
-                h-10 flex items-center justify-center rounded-xl text-sm font-bold transition-all cursor-pointer
-                ${
-                  isToday
-                    ? 'bg-[#9D00FF] text-white shadow-[0_0_18px_#9D00FF]'
-                    : 'text-white/40 hover:bg-white/5 hover:text-white'
-                }
-              `}
+              className={`${styles.dayCell} ${isToday ? styles.today : ''}`}
             >
               {dia}
             </div>

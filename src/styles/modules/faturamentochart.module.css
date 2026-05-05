@@ -1,0 +1,56 @@
+.container {
+  background-color: #0B0118 !important;
+  padding: 2rem !important;
+  border-radius: 2.5rem !important;
+  height: 350px !important; /* Força a altura para o gráfico aparecer */
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  width: 100% !important;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.container:hover {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.subtitle {
+  color: #00F2FF;
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.05em;
+}
+
+.badgeLive {
+  background-color: rgba(0, 242, 255, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.badgeText {
+  color: #00F2FF;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.chartWrapper {
+  height: 200px !important;
+  width: 100% !important;
+}

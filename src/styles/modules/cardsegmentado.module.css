@@ -1,0 +1,144 @@
+.cardContainer {
+  background-color: #0b0118;
+  padding: 2rem;
+  border-radius: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 280px;
+  position: relative;
+  transition: all 0.5s duration;
+}
+
+.cardContainer:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.liveIndicator {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pingContainer {
+  position: relative;
+  display: flex;
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.pingAnim {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  position: absolute;
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  background-color: #ef4444;
+  opacity: 0.75;
+}
+
+.pingStatic {
+  position: relative;
+  display: inline-flex;
+  border-radius: 9999px;
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: #dc2626;
+}
+
+.liveText {
+  font-size: 10px;
+  font-weight: 900;
+  color: #ef4444;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  margin-top: 1rem;
+}
+
+.chartContainer {
+  height: 14rem;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.centerValueWrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+.mainValue {
+  color: white;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  transition: all 0.3s;
+}
+
+.subLabel {
+  font-size: 9px;
+  color: #64748b;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-top: 0.5rem;
+  opacity: 0.5;
+}
+
+.textContainer {
+  text-align: left;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  margin-bottom: 0.25rem;
+  font-style: italic;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25;
+  max-width: 95%;
+}
+
+/* Tamanhos Dinâmicos de Texto */
+.textLg { font-size: 1.125rem; }
+.textXl { font-size: 1.25rem; }
+.text2xl { font-size: 1.5rem; }
+.text4xl { font-size: 2.25rem; }
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

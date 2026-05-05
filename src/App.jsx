@@ -10,17 +10,17 @@ import Forum from "./components/Forum";
 import ChartPage from "./components/ChartPage";
 import AppsPage from "./components/AppsPage";
 
-// --- COMPONENTES DO DASHBOARD (CARDS E GRÁFICOS) ---
-import Calendario from "./components/calendario";
-import Activities from './components/Activities';
-import CheckupNegocio from './components/CheckupNegocio';
-import CardSegmentado from "./components/cardSagmentado";
-import TabelaMetas from './components/TabelaMetas';
+// --- COMPONENTES DO DASHBOARD (NOMES EXATOS DA SUA PASTA) ---
+import Calendario from "./components/calendario";      // 'c' minúsculo conforme seu arquivo
+import Activities from "./components/Activities";
+import CheckupNegocio from "./components/CheckupNegocio";
+import CardSegmentado from "./components/cardSegmentado"; // com 'a' conforme seu arquivo
+import TabelaMetas from "./components/TabelaMetas";
 import FaturamentoChart from "./components/FaturamentoChart";
-import PerformanceBars from './components/BarraProgresso';
+import PerformanceBars from "./components/BarraProgresso";
 
-// --- ESTILOS ---
-import "./components/responsive.css";
+// --- ESTILOS (CSS MODULES) ---
+import styles from "./styles/modules/app.module.css";
 
 /* ============================================================
     COMPONENTES DE APOIO (DASHBOARD HOME)
@@ -40,16 +40,19 @@ function DashboardHome({ cards, grafico, barras, status, logs, checkup }) {
   ];
 
   return (
-    <div className="dashboard-content-wrapper space-y-8 pb-10">
+    /* Aplicando a classe via CSS Modules conforme sua estrutura */
+    <div className={`${styles['dashboard-content-wrapper']} space-y-8 pb-10`}>
 
       {/* BLOCO SUPERIOR INTEGRADO: CARDS E METAS */}
-      <section className="section-top-metrics flex flex-row flex-wrap xl:flex-nowrap gap-6 items-stretch w-full">
+      {/* BLOCO SUPERIOR: Removi flex-nowrap para evitar que os cards sumam se a tela for pequena */}
+      <section className="section-top-metrics flex flex-wrap lg:flex-row gap-6 items-stretch w-full">
         {(cards && cards.length ? cards : [
           { valor: "1.544", percentual: 75, label_principal: "Vendas" },
           { valor: "R$ 4.870", percentual: 60, label_principal: "Receita" },
           { valor: "84%", percentual: 84, label_principal: "Conversão" }
         ]).map((item, i) => (
-          <div key={i} className="card-wrapper flex-1 min-w-[220px]">
+          /* Mudança: usei flex-1 e w-full no mobile para garantir visibilidade */
+          <div key={i} className="card-wrapper flex-1 min-w-[100%] sm:min-w-[250px] md:min-w-[300px]">
             <CardSegmentado
               valor={item.valor}
               percentual={item.percentual}
@@ -59,7 +62,7 @@ function DashboardHome({ cards, grafico, barras, status, logs, checkup }) {
           </div>
         ))}
 
-        <div className="metas-wrapper flex-1 min-w-[280px]">
+        <div className="metas-wrapper flex-1 min-w-[100%] lg:min-w-[350px]">
           <TabelaMetas status={status} />
         </div>
       </section>
@@ -85,12 +88,12 @@ function DashboardHome({ cards, grafico, barras, status, logs, checkup }) {
         </div>
 
         <div className="activities-widget-container">
+          {/* Dentro de DashboardHome, a variável correta é 'logs' */}
           <Activities logs={logs} />
         </div>
 
-        {/* COMPONENTE CONECTADO AOS DADOS DE CHECKUP */}
         <div className="analysis-overview-container lg:col-span-2">
-          <CheckupNegocio status={checkup} /> 
+          <CheckupNegocio status={checkup} />
         </div>
 
       </section>
@@ -111,9 +114,8 @@ export default function App() {
   const [dadosBarras, setDadosBarras] = useState([]);
   const [dadosStatus, setDadosStatus] = useState([]);
   const [dadosLogs, setDadosLogs] = useState([]);
-  const [dadosCheckup, setDadosCheckup] = useState([]); // 1. NOVO ESTADO CRIADO
+  const [dadosCheckup, setDadosCheckup] = useState([]);
 
-  // Estados do Modal de Login
   const [isLogin, setIsLogin] = useState(true);
   const [emailLog, setEmailLog] = useState("");
   const [senhaLog, setSenhaLog] = useState("");
@@ -131,10 +133,9 @@ export default function App() {
       const endpoints = [
         { url: "get_cards.php", setter: setDadosCards },
         { url: "get_line_chart.php", setter: (data) => setDadosGrafico(Array.isArray(data) ? data : (data.dados || [])) },
-        { url: "grafico-barras.php", setter: setDadosBarras }, 
+        { url: "grafico-barras.php", setter: setDadosBarras },
         { url: "metas-financeiras.php", setter: (data) => setDadosStatus(Array.isArray(data) ? data : []) },
         { url: "get_logs.php", setter: setDadosLogs },
-        // 2. NOVO ENDPOINT ADICIONADO À FILA
         { url: "checkup-negocio.php", setter: (data) => setDadosCheckup(Array.isArray(data) ? data : []) }
       ];
 
@@ -171,7 +172,7 @@ export default function App() {
               barras={dadosBarras}
               status={dadosStatus}
               logs={dadosLogs}
-              checkup={dadosCheckup} // 3. PASSANDO OS DADOS PARA O HOME
+              checkup={dadosCheckup}
             />
           )}
           {abaAtiva === "CHART" && <ChartPage />}

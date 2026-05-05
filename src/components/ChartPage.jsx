@@ -8,6 +8,7 @@ import {
   Tooltip, 
   CartesianGrid 
 } from "recharts";
+import styles from "../styles/modules/chartpage.module.css";
 
 export default function ChartPage() {
   const data = [
@@ -19,23 +20,19 @@ export default function ChartPage() {
   ];
 
   return (
-    /* CONTAINER PRINCIPAL DA PÁGINA */
-    <section className="animate-in fade-in duration-500 space-y-6">
+    <section className={styles.section}>
       
-      {/* CABEÇALHO DA SEÇÃO */}
-      <header>
-        <h2 className="text-[#00F2FF] font-black tracking-[0.3em] uppercase text-sm">
-          Analytics / <span className="text-white">Chart</span>
+      <header className={styles.header}>
+        <h2 className={styles.categoryTitle}>
+          Analytics / <span className={styles.mainTitle}>Chart</span>
         </h2>
       </header>
       
-      {/* CARD DO GRÁFICO */}
-      <article className="bg-[#0B0118] p-8 rounded-[2.5rem] border border-white/5 h-[450px] shadow-2xl relative overflow-hidden">
+      <article className={styles.chartCard}>
         
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data}>
             
-            {/* DEFINIÇÕES DE GRADIENTE (SVG DEFS) */}
             <defs>
               <linearGradient id="colorTotal" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#9D00FF" stopOpacity={0.4}/>
@@ -43,14 +40,12 @@ export default function ChartPage() {
               </linearGradient>
             </defs>
 
-            {/* CONFIGURAÇÃO DA GRADE */}
             <CartesianGrid 
               strokeDasharray="3 3" 
               stroke="rgba(255,255,255,0.05)" 
               vertical={false} 
             />
             
-            {/* EIXOS DO GRÁFICO */}
             <XAxis 
               dataKey="name" 
               axisLine={false} 
@@ -65,18 +60,11 @@ export default function ChartPage() {
               tick={{fill: '#64748b', fontSize: 12}} 
             />
             
-            {/* TOOLTIP PERSONALIZADA (ESTILO INTERNO) */}
             <Tooltip 
-              contentStyle={{ 
-                backgroundColor: "#12051f", 
-                border: "none", 
-                borderRadius: "15px",
-                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.5)",
-                color: "#fff"
-              }} 
+              contentStyle={{ border: 'none', borderRadius: '15px' }}
+              wrapperClassName={styles.tooltipContainer}
             />
 
-            {/* ÁREA DO GRÁFICO COM EFEITO NEON */}
             <Area 
               type="monotone" 
               dataKey="total" 

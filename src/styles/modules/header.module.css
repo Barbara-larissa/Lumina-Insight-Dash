@@ -1,0 +1,170 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background-color: #0b0118;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobileNav {
+  margin-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .mobileNav {
+    display: none;
+  }
+}
+
+.menuButton {
+  color: #00f2ff;
+  transition: transform 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menuButton:hover {
+  transform: scale(1.1);
+}
+
+.searchSection {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+@media (min-width: 768px) {
+  .searchSection {
+    max-width: 400px;
+  }
+}
+
+.searchInput {
+  width: 100%;
+  background-color: #130721;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 10px;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #00f2ff;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #475569;
+  pointer-events: none;
+}
+
+.actionsArea {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.iconGroup {
+  display: none;
+  gap: 1.5rem;
+  color: #64748b;
+}
+
+@media (min-width: 640px) {
+  .iconGroup {
+    display: flex;
+  }
+}
+
+.navIcon {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navIcon:hover {
+  color: #ffffff;
+}
+
+.authStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  padding-left: 1.5rem;
+}
+
+.userText {
+  text-align: right;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .userText {
+    display: block;
+  }
+}
+
+.welcomeLabel {
+  font-size: 10px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.userName {
+  font-size: 12px;
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.logoutButton {
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.logoutButton:hover {
+  color: #ef4444;
+}
+
+.loginLink {
+  background: none;
+  border: none;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: #00f2ff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.loginLink:hover {
+  color: #ffffff;
+}
+
+/* AVATAR / UPLOAD STYLES */
+.avatarWrapper {
+  position: relative;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  background-color: transparent;
+}
+

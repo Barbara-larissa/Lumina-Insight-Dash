@@ -1,0 +1,41 @@
+.cardcontainer {
+  background-color: #0b0118;
+  padding: 2rem;
+  border-radius: 2.5rem;
+  height: 450px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.loglist {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.logitem {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.indicator {
+  width: 4px;
+  height: 40px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.loadingtext {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 5rem;
+}

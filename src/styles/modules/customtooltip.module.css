@@ -1,0 +1,63 @@
+.cardSegmentadoContainer {
+  display: flex !important;
+  flex-direction: column;
+  min-height: 180px !important; /* Evita que o card colapse sem conteúdo */
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+}
+.cardSegmentadoContainer .recharts-responsive-container {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 200px;
+}
+.statusBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transition: all 0.5s ease;
+}
+
+.label {
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.mainValue {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.trendBadge {
+  font-size: 10px;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.statusText {
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}

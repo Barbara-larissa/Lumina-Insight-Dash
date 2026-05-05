@@ -1,52 +1,64 @@
 import React from 'react';
+import styles from "../styles/modules/customtooltip.module.css";
 
 const CustomTooltip = ({ active, payload, label }) => {
+  // 1. Verificamos se a tooltip está ativa e se há dados no payload
   if (active && payload && payload.length) {
-    const valor = payload[0].value;
     
-    // Pegamos o índice do ponto atual no gráfico
-    const index = payload[0].payload.index; 
-    // Tentamos pegar o valor anterior para comparar (se existir)
-    const valorAnterior = payload[0].payload.valorAnterior || 0;
+    // 2. O 'payload[0].payload' contém o objeto original da sua array 'data'
+    // Se o seu objeto for { name: "Seg", total: 400 }, o 'name' estará aqui.
+    const dadosBrutos = payload[0].payload;
+    const valorAtual = payload[0].value;
 
-    // Lógica inteligente: Só é queda se o valor atual for menor que o anterior
-    // Para teste rápido com seus dados fixos, vamos usar:
-    const isQueda = valor < 50; // Ajustado para um limite menor enquanto você testa
+    // 3. Prioridade de exibição: 
+    // Primeiro tentamos o 'label' do Recharts, 
+    // se falhar, tentamos o 'name' direto do seu objeto,
+    // se falhar, usamos um fallback.
+    const dataExibicao = label || dadosBrutos.name || "Data Indefinida";
+
+    // Lógica de queda (exemplo usando o valor atual)
+    const isQueda = valorAtual < 50;
+    const corStatus = isQueda ? "#FF0000" : "#00F2FF";
 
     return (
-      /* CONTAINER PRINCIPAL DA TOOLTIP (GLASSMORPHISM) */
-      <div className="tooltip-container bg-[#0B0118]/95 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-2xl min-w-[160px] relative overflow-hidden">
-        
-        {/* BARRA DE STATUS SUPERIOR */}
+      <div className={styles.tooltipContainer}>
         <div
-          className="tooltip-status-bar absolute top-0 left-0 h-[3px] w-full transition-colors duration-500"
+          className={styles.statusBar}
           style={{
-            backgroundColor: isQueda ? "#FF0000" : "#00F2FF",
-            boxShadow: `0 0 15px ${isQueda ? "#FF0000" : "#00F2FF"}`
+            backgroundColor: corStatus,
+            boxShadow: `0 0 15px ${corStatus}`
           }}
         />
 
-        <p className="tooltip-label text-[9px] font-black uppercase tracking-[0.3em] text-white/40 mb-2">
-          {label}
+        {/* Aqui é onde a data deve aparecer corrigida */}
+        <p className={styles.label}>
+          {dataExibicao}
         </p>
 
-        <div className="tooltip-content-wrapper flex flex-col gap-1">
-          <div className="tooltip-value-row flex items-baseline gap-2">
-            <span className="tooltip-main-value text-3xl font-bold text-white tracking-tighter tabular-nums">
-              {valor}
+        <div className={styles.contentWrapper}>
+          <div className={styles.valueRow}>
+            <span className={styles.mainValue}>
+              {valorAtual}
             </span>
-            <span className={`tooltip-trend-badge text-[10px] font-black italic ${isQueda ? 'text-red-500' : 'text-[#00F2FF]'}`}>
+            <span 
+              className={styles.trendBadge}
+              style={{ color: corStatus }}
+            >
               {isQueda ? "▼ DOWN" : "▲ UP"}
             </span>
           </div>
 
-          <span className={`tooltip-status-text text-[8px] font-bold uppercase tracking-widest ${isQueda ? 'text-red-500' : 'text-white/60'}`}>
+          <span 
+            className={styles.statusText}
+            style={{ color: isQueda ? "#FF0000" : "rgba(255,255,255,0.6)" }}
+          >
             {isQueda ? "Atenção: Queda detectada" : "Desempenho Estável"}
           </span>
         </div>
       </div>
     );
   }
+
   return null;
 };
 

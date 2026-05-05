@@ -1,0 +1,50 @@
+.rootcontainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: #130721;
+  color: white;
+  overflow-x: hidden;
+}
+
+.mainlayout {
+  flex: 1;
+  background-color: #05010d;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+.pagecontainer {
+  padding: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .pagecontainer {
+    padding: 2.5rem;
+  }
+}
+
+/* Grids do Dashboard Home */
+.contentwrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
+}
+
+.topmetrics {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: stretch;
+  width: 100%;
+}
+
+.chartsgrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+

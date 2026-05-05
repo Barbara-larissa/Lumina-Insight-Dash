@@ -1,0 +1,208 @@
+/* =========================================================
+   RESPONSIVIDADE LIMPA (SEM QUEBRAR GRID GLOBAL)
+   ========================================================= */
+
+/* evita scroll horizontal bugado */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* melhora interação mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================================
+   📱 MOBILE (até 640px)
+   ========================================================= */
+@media (max-width: 640px) {
+
+  /* padding geral menor */
+  .p-6 {
+    padding: 1rem !important;
+  }
+
+  .p-8 {
+    padding: 1.2rem !important;
+  }
+
+  .p-10 {
+    padding: 1.2rem !important;
+  }
+
+  /* textos menores */
+  .text-\[11px\] {
+    font-size: 10px !important;
+  }
+
+  .text-\[10px\] {
+    font-size: 9px !important;
+  }
+
+  /* grids principais viram coluna única */
+  .grid-cols-5 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .xl\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* cards mais suaves */
+  .rounded-\[2\.5rem\] {
+    border-radius: 1.2rem !important;
+  }
+
+  /* charts não estouram */
+  .recharts-responsive-container {
+    min-height: 180px !important;
+  }
+
+  /* HEADER MOBILE */
+  header img {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  header input {
+    font-size: 9px !important;
+    padding: 0.7rem 0.9rem !important;
+  }
+
+  header svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  header .gap-4,
+  header .gap-6 {
+    gap: 0.5rem !important;
+  }
+
+  /* --- CHECKUP NEGÓCIO MOBILE (CORRIGIDO) --- */
+  .checkupCard {
+    width: 100% !important;
+    padding: 1.2rem !important;
+    overflow: visible !important;
+  }
+
+  /* 🔥 AQUI ESTÁ A CORREÇÃO REAL */
+  @media (max-width: 640px) {
+
+@media (max-width: 640px) {
+
+   [class*="mainCard"] [class*="metricsGrid"] {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+  }
+
+  [class*="mainCard"] [class*="metricWrapper"] {
+    width: calc(50% - 0.75rem) !important;
+    flex: none !important;
+  }
+
+  [class*="mainCard"] [class*="chartContainer"] {
+    width: 90px !important;
+    height: 90px !important;
+  }
+
+}
+
+}
+
+  .mainCard {
+    overflow: visible !important;
+  }
+
+  /* fallback flex */
+  .grid-cols-5,
+  .xl\:grid-cols-3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+  }
+}
+
+/* =========================================================
+   📲 TABLET (641px até 1024px)
+   ========================================================= */
+@media (min-width: 641px) and (max-width: 1024px) {
+
+  .grid-cols-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .xl\:grid-cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .p-8 {
+    padding: 1.4rem !important;
+  }
+
+  .p-10 {
+    padding: 1.6rem !important;
+  }
+
+  .recharts-responsive-container {
+    min-height: 260px !important;
+  }
+
+  /* CHECKUP TABLET */
+  .metricsGrid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem !important;
+    justify-items: center !important;
+  }
+
+  .metricWrapper {
+    width: 100% !important;
+  }
+
+  .chartContainer {
+    width: 120px !important;
+    height: 120px !important;
+  }
+}
+
+/* =========================================================
+   💻 DESKTOP (PRESERVADO)
+   ========================================================= */
+@media (min-width: 1025px) {
+
+  .grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .xl\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* NÃO ALTERA SUA LÓGICA ORIGINAL */
+  .metricsGrid {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+    margin: 3.5rem 0 !important;
+  }
+
+  .chartContainer {
+    width: 110px !important;
+    height: 110px !important;
+    overflow: visible !important;
+  }
+}
+
+/* GLOBAL: evita corte de gráfico */
+.chartContainer,
+.chartContainer svg,
+.metricWrapper {
+  overflow: visible !important;
+}

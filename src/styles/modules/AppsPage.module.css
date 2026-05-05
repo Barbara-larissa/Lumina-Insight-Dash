@@ -1,0 +1,29 @@
+.container {
+  /* Removemos o composes que deu erro e usamos animação padrão */
+  animation: fadeIn 500ms ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.headerTitle {
+  color: #00F2FF;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+  letter-spacing: 0.3em;
+}
+
+.titleWhite {
+  color: #ffffff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+

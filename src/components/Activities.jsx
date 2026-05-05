@@ -1,46 +1,44 @@
 import React from 'react';
 
 const Activities = ({ logs }) => {
-  
   return (
-    /* CONTAINER PRINCIPAL DO CARD */
-    <div className="bg-[#0B0118] p-8 rounded-[2.5rem] h-[450px] border border-white/5 flex flex-col w-full shadow-2xl">
+    /* CONTAINER_PRINCIPAL: Onde fica todo o card de atividades */
+    <div className="activities-card-wrapper bg-[#0B0118] p-8 rounded-[2.5rem] h-[450px] border border-white/5 flex flex-col w-full shadow-2xl">
       
-      {/* CABEÇALHO / TÍTULO */}
-      <header className="mb-6">
-        <h4 className="text-sm font-black uppercase text-white">
+      {/* AREA_DO_CABECALHO: Onde fica o título "System Logs" */}
+      <header className="activities-header-section mb-6">
+        <h4 className="activities-title text-sm font-black uppercase text-white">
           System <span className="text-[#00F2FF]">Logs</span>
         </h4>
       </header>
 
-      {/* ÁREA DE LISTAGEM (SCROLL) */}
-      <div className="flex flex-col gap-6 overflow-y-auto pr-2 custom-scrollbar">
+      {/* AREA_DE_LISTAGEM_SCROLL: A parte que permite rolar os logs */}
+      <div className="activities-scrollable-list flex flex-col gap-6 overflow-y-auto pr-2 custom-scrollbar">
         {logs && logs.length > 0 ? (
           logs.map((item, index) => (
-            
-            /* ITEM DA ATIVIDADE - Corrigido para não ser um bloco gigante */
-            <article key={index} className="flex gap-4 items-start group">
+            /* LINHA_DO_LOG: O container de cada item individual */
+            <article key={index} className="activities-item-row flex gap-4 items-start group">
               
-              {/* INDICADOR VISUAL (GLOW) */}
+              {/* INDICADOR_VISUAL: A barrinha colorida lateral com o brilho (glow) */}
               <div 
-                className="w-1 h-10 rounded-full shrink-0 transition-all duration-300 group-hover:scale-y-110" 
+                className="activity-color-bar w-1 h-10 rounded-full shrink-0 transition-all duration-300 group-hover:scale-y-110" 
                 style={{ 
                   backgroundColor: item.cor || "#9D00FF", 
                   boxShadow: `0 0 10px ${item.cor || "#9D00FF"}` 
                 }} 
               />
               
-              {/* CONTEÚDO DO LOG */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-black uppercase text-white/90">
+              {/* CONTEUDO_TEXTUAL: Agrupa o título, data e descrição */}
+              <div className="activity-text-content flex flex-col">
+                <div className="activity-meta-data flex items-center gap-2">
+                  <span className="activity-label text-[10px] font-black uppercase text-white/90">
                     {item.titulo}
                   </span>
-                  <span className="text-[8px] text-white/40 font-bold">
+                  <span className="activity-timestamp text-[8px] text-white/40 font-bold">
                     {item.data_hora} 
                   </span>
                 </div>
-                <p className="text-[11px] text-white/50 mt-1 leading-relaxed">
+                <p className="activity-description text-[11px] text-white/50 mt-1 leading-relaxed">
                   {item.descricao}
                 </p>
               </div>
@@ -48,9 +46,9 @@ const Activities = ({ logs }) => {
             </article>
           ))
         ) : (
-          /* ESTADO DE CARREGAMENTO */
-          <div className="text-center mt-20">
-            <p className="text-white/20 text-[10px] italic uppercase tracking-widest animate-pulse">
+          /* ESTADO_VAZIO: O que aparece enquanto os dados não chegam */
+          <div className="activities-empty-state text-center mt-20">
+            <p className="loading-text text-white/20 text-[10px] italic uppercase tracking-widest animate-pulse">
               Sincronizando logs...
             </p>
           </div>

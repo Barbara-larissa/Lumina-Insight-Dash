@@ -8,6 +8,7 @@ import {
   Settings,
   X
 } from "lucide-react";
+import styles from "../styles/modules/sidebar.module.css";
 
 export default function Sidebar({
   abaAtiva,
@@ -30,41 +31,34 @@ export default function Sidebar({
       {menuOpen && (
         <div
           onClick={() => setMenuOpen(false)}
-          className="fixed inset-0 bg-black/60 z-40 lg:hidden"
+          className={styles.overlay}
         />
       )}
 
       <aside
-        className={`
-          fixed top-0 left-0 z-50 h-screen w-72
-          bg-[#130721] p-8 border-r border-white/5
-          transform transition-transform duration-300
-          ${menuOpen ? "translate-x-0" : "-translate-x-full"}
-          lg:translate-x-0 lg:static lg:flex lg:flex-col
-        `}
+        className={`${styles.sidebar} ${
+          menuOpen ? styles.open : styles.closed
+        }`}
       >
         {/* topo mobile */}
-        <div className="flex justify-between items-center mb-10 lg:hidden">
-          <h1 className="text-[14px] font-black tracking-[0.2em] uppercase">
-            Dashboard
-          </h1>
-
-          <button onClick={() => setMenuOpen(false)}>
+        <div className={styles.headerMobile}>
+          <h1 className={styles.brandTitle}>Dashboard</h1>
+          <button 
+            onClick={() => setMenuOpen(false)}
+            className={styles.closeButton}
+          >
             <X size={24} />
           </button>
         </div>
 
         {/* topo desktop */}
-        <div className="hidden lg:flex items-center gap-3 mb-12">
-          <div className="w-2.5 h-7 bg-[#00F2FF] rounded-full shadow-[0_0_15px_#00F2FF]" />
-
-          <h1 className="text-[14px] font-black tracking-[0.2em] uppercase">
-            Dashboard
-          </h1>
+        <div className={styles.headerDesktop}>
+          <div className={styles.brandIndicator} />
+          <h1 className={styles.brandTitle}>Dashboard</h1>
         </div>
 
         {/* menu */}
-        <nav className="space-y-1 flex-1">
+        <nav className={styles.nav}>
           {menus.map((item) => (
             <div
               key={item.label}
@@ -72,15 +66,14 @@ export default function Sidebar({
                 setAbaAtiva(item.label);
                 setMenuOpen(false);
               }}
-              className={`flex items-center gap-4 px-6 py-4 rounded-2xl cursor-pointer transition-all ${
+              className={`${styles.navItem} ${
                 abaAtiva === item.label
-                  ? "bg-[#00F2FF]/10 text-[#00F2FF]"
-                  : "text-slate-500 hover:text-white hover:bg-white/5"
+                  ? styles.itemActive
+                  : styles.itemInactive
               }`}
             >
               <item.icon size={18} />
-
-              <span className="text-[10px] font-black tracking-[0.2em]">
+              <span className={styles.linkLabel}>
                 {item.label}
               </span>
             </div>
